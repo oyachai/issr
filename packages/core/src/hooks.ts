@@ -71,13 +71,11 @@ export const useSsrEffect = (effect: EffectCallback, deps?: DependencyList | str
   if (firstLoadingOnTheBackend) {
     effect();
     setEffectCalledState(effectId);
-
-    return;
     // First call after hydration must be skipped on the client side
   }
-  if (firstLoadingOnTheClient) {
-    return;
-  }
+  // if (firstLoadingOnTheClient) {
+  //   return;
+  // }
 
   if (Array.isArray(deps)) {
     useEffect(effect, deps);
